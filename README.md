@@ -24,8 +24,8 @@ period : Active‚Ìƒpƒ‹ƒX•
 
 ---
 
-This library is the library to use hardware PWM by a board of H3/H2+ base such as OrangePi and NanoPi.  
-I'm confirming that it works by the following board.  
+This is the library to use hardware PWM by a board of H3/H2+ base such as OrangePi and NanoPi.  
+It works by the following board.  
 OrangePi PC(H3)  
 OrangePi ZERO(H2+)  
 NanoPi M1(H3)
