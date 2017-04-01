@@ -16,6 +16,7 @@ https://github.com/iboguslavsky/pwm-sunxi-opi0
 cc -o pwm pwm.c -lwiringPi  
 sudo ./pwm  
 
+サーボモータを使う場合、全体のパルス幅とActiveパルス幅を指定すると簡単に制御できます。
 void pwm_begin(float period)  
 period : 全体のパルス幅(mSec)  
 
@@ -40,6 +41,8 @@ http://akizukidenshi.com/download/ds/towerpro/SG90.pdf
 
 cc -o pwm pwm.c -lwiringPi  
 sudo ./pwm  
+
+When using a servomotor, you can control with entire pulse width and active pulse width.  
 
 void pwm_begin(float period)  
 period : entire pulse width(mSec)  
