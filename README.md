@@ -36,6 +36,8 @@ https://github.com/iboguslavsky/pwm-sunxi-opi0
 ---
 
 SG90 micro servomotor works by the following program.  
+http://akizukidenshi.com/download/ds/towerpro/SG90.pdf  
+
 cc -o pwm pwm.c -lwiringPi  
 sudo ./pwm  
 
