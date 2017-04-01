@@ -16,7 +16,7 @@ https://github.com/iboguslavsky/pwm-sunxi-opi0
 cc -o pwm pwm.c -lwiringPi  
 sudo ./pwm  
 
-サーボモータを使う場合、全体のパルス幅とActiveパルス幅を指定すると簡単に制御できます。
+サーボモータを使う場合、全体のパルス幅とActiveパルス幅を指定すると制御することができます。
 void pwm_begin(float period)  
 period : 全体のパルス幅(mSec)  
 
