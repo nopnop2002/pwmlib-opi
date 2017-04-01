@@ -17,10 +17,10 @@ cc -o pwm pwm.c -lwiringPi
 sudo ./pwm  
 
 void pwm_begin(float period)  
-period : 全体のパルス幅  
+period : 全体のパルス幅(mSec)  
 
 void pwm_active(float period)  
-period : Activeのパルス幅  
+period : Activeのパルス幅(mSec)  
 
 ---
 
