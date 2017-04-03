@@ -28,7 +28,9 @@ period : Activeのパルス幅(mSec)
 サーバプロセスをバックグラウンドで起動することで、コマンドラインからサーボモータを制御することができます。  
 
 cc -o pwmd pwmd.c pwm.c -lwiringPi  
-sudo ./pwmd &  
+su  
+./pwmd &  
+exit
 
 cc -o pwmc pwmc.c pwm.c -lwiringPi  
 ./pwmc 20.0 1.45  
@@ -70,7 +72,9 @@ period :  active pulse width(mSec)
 You can control servomotor from command-line with background server process like pigpio.  
 
 cc -o pwmd pwmd.c pwm.c -lwiringPi  
-sudo ./pwmd &  
+su  
+./pwmd &  
+exit
 
 cc -o pwmc pwmc.c pwm.c -lwiringPi  
 ./pwmc 20.0 1.45  
