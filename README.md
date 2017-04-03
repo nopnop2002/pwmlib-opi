@@ -29,6 +29,8 @@ period : ActiveÇÃÉpÉãÉXïù(mSec)
 
 cc -o pwmd pwmd.c pwm.c -lwiringPi  
 sudo ./pwmd &  
+
+cc -o pwmc pwmc.c pwm.c -lwiringPi  
 ./pwmc 20.0 1.45  
 ./pwmc 20.0 2.35  
 ./pwmc 20.0 0.625  
@@ -69,6 +71,7 @@ You can control servomotor from command-line with background server process like
 
 cc -o pwmd pwmd.c pwm.c -lwiringPi  
 sudo ./pwmd &  
+
 cc -o pwmc pwmc.c pwm.c -lwiringPi  
 ./pwmc 20.0 1.45  
 ./pwmc 20.0 2.35  
