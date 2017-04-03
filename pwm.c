@@ -104,23 +104,48 @@ uint16_t pwm_activecycles(uint16_t val) {
   return rc;
 }
 
-/*
- period : PWM entire period (mSec)
-*/
-void pwm_begin(float period) {
-  uint16_t prescale;
+
+uint32_t pwm_freqperiod(void) {
+  int fd;
   int rc;
+  char buf[10];
+  
+  fd = open ("/sys/class/pwm-sunxi-opi0/pwm0/freqperiod",O_RDONLY);
+  if (fd == -1) return -1;
+  read(fd,buf,10);
+  int i;
+  for(i=0;i<10;i++) {
+//    printf("<freqperiod>buf[%d]=%c[%02x]\n",i,buf[i],buf[i]);
+    if (buf[i] == 0x0a) buf[i] = 0;
+  }
+  rc = atoi(buf);
+//  printf("<freqperiod>buf=%s rc=%d\n",buf,rc);
+  close(fd);
+  return rc;
+}
+
+/*
+ period : PWM period (mSec)
+ return : freqperiod (Hz)
+*/
+uint32_t pwm_begin(float period) {
+  uint16_t prescale;
+  uint16_t rc;
+  uint32_t freq;
   prescale = (period * 1000) / 5;
-//  printf("prescale=%d\n",prescale);
+//  printf("<pwm_begin>prescale=%d\n",prescale);
   rc = pwm_enable();
-  if (rc < 0) return;
+  if (rc < 0) return -1;
   delay(100);
   rc = pwm_prescale(0);
-  if (rc < 0) return;
+  if (rc < 0) return -1;
   delay(100);
   rc = pwm_entirecycles(prescale);
-  delay(100);
-  return;
+  if (rc < 0) return -1;
+  delay(200);
+  freq = pwm_freqperiod();
+//  printf("<pwm_begin>freq=%d\n",freq);
+  return freq;
 }
 
 /*
@@ -141,9 +166,10 @@ void pwm_end(void) {
   return;
 }
 
-
+#if 0
 int main() {
   uint16_t rc;
+  uint32_t freq;
   int pwm;
 
   rc = pwm_enable();
@@ -181,7 +207,8 @@ int main() {
   rc = pwm_disable();
   printf("pwm_disable=%d\n",rc);
 
-  pwm_begin(20.0);
+  freq = pwm_begin(20.0);
+  printf("freqperiod=%d\n",freq);
   pwm_active(1.45); // angle 0
   delay(500);
   pwm_active(2.35); // angle +90
@@ -194,3 +221,4 @@ int main() {
   delay(500);
   pwm_end();
 }
+#endif

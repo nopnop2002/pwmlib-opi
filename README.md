@@ -13,8 +13,8 @@ https://github.com/iboguslavsky/pwm-sunxi-opi0
 ---
 
 以下のプログラムでSG90マイクロサーボモータが 0°→ -90° → +90° → 0° に動きます。  
-cc -o pwm pwm.c -lwiringPi  
-sudo ./pwm  
+cc -o pwmt pwmt.c pwm.c -lwiringPi  
+sudo ./pwmt  
 
 サーボモータを使う場合、全体のパルス幅とActiveパルス幅で制御することができます。  
 void pwm_begin(float period)  
@@ -22,6 +22,16 @@ period : 全体のパルス幅(mSec)
 
 void pwm_active(float period)  
 period : Activeのパルス幅(mSec)  
+
+---
+
+サーバプロセスをバックグラウンドで起動することで、コマンドラインからサーボモータを制御することができます。  
+
+cc -o pwmd pwmd.c pwm.c -lwiringPi  
+sudo ./pwmd &  
+./pwmc 20.0 1.45  
+./pwmc 20.0 2.35  
+./pwmc 20.0 0.625  
 
 ---
 
@@ -42,8 +52,8 @@ https://github.com/iboguslavsky/pwm-sunxi-opi0
 
 SG90 micro servomotor (http://akizukidenshi.com/download/ds/towerpro/SG90.pdf) works by the following program.  
 
-cc -o pwm pwm.c -lwiringPi  
-sudo ./pwm  
+cc -o pwmt pwmt.c pwm.c -lwiringPi  
+sudo ./pwmt  
 
 When using a servomotor, you can control with entire pulse width and active pulse width.  
 
@@ -53,3 +63,15 @@ period : entire pulse width(mSec)
 void pwm_active(float period)  
 period :  active pulse width(mSec)  
 
+---
+
+You can control servomotor from command-line with background server process like pigpio.  
+
+cc -o pwmd pwmd.c pwm.c -lwiringPi  
+sudo ./pwmd &  
+cc -o pwmc pwmc.c pwm.c -lwiringPi  
+./pwmc 20.0 1.45  
+./pwmc 20.0 2.35  
+./pwmc 20.0 0.625  
+
+pwmc don't need delay time.  
