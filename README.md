@@ -32,7 +32,7 @@ su
 ./pwmd &  
 exit
 
-cc -o pwmc pwmc.c pwm.c -lwiringPi  
+cc -o pwmc pwmc.c  
 ./pwmc 20.0 1.45  
 ./pwmc 20.0 2.35  
 ./pwmc 20.0 0.625  
@@ -76,7 +76,7 @@ su
 ./pwmd &  
 exit
 
-cc -o pwmc pwmc.c pwm.c -lwiringPi  
+cc -o pwmc pwmc.c  
 ./pwmc 20.0 1.45  
 ./pwmc 20.0 2.35  
 ./pwmc 20.0 0.625  
