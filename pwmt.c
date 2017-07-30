@@ -24,6 +24,10 @@ int main() {
   printf("pwm_activecycles=%d\n",rc);
   delay(500);
 
+  printf("\n\nThis is angle = 0\nIf you ok, Push Enter\n");
+  char ch;
+  scanf("%c",&ch);
+  
   for(pwm=290;pwm>124;pwm--) {
     rc = pwm_activecycles(pwm);
 //    printf("pwm_activecycles=%d\n",rc);
