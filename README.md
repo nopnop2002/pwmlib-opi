@@ -1,6 +1,11 @@
 # pwmlib-opi
 PWM Library for H3/H2+ Sunxi SoC
 
+__The Mainline Kernel provides a PWM driver as an Overlay driver.__   
+__Mainline Kernel no longer requires this library.__   
+
+---
+
 このライブラリはOrangePiやNanoPiなど、H3/H2+ベースのボードでハードウェアPWMを使うためのライブラリです。  
 以下のボードで動作を確認しています。  
 OrangePi PC(H3)  
